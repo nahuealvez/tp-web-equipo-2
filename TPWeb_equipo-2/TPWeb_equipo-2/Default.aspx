@@ -6,10 +6,13 @@
     <h2>Carrito de compras</h2>
     <div class="d-flex flex-row gap-3">
        <%
-            foreach (dominio.Articulo articulo in ListaArticulo)
-            {
-                string imageUrl = articulo.UrlImagen;
-                //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
+           foreach (dominio.Articulo articulo in ListaArticulo)
+           {
+               string imageUrl = articulo.UrlImagen;
+
+               string precio = articulo.Precio.ToString("N2", idioma);
+
+               //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
                     %>
                     <div class="row g-4">
                         <div class="col">
@@ -17,6 +20,7 @@
                                 <img src="<%: imagenNegocio.cargarImagen(imageUrl) %>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><%: articulo.Nombre %></h5>
+                                    <h6 class="h5"><%: precio%></h6>
                                     <p class="card-text"><%: articulo.Descripcion %></p>
                                 </div>
                             </div>
