@@ -11,12 +11,12 @@ namespace TPWeb_equipo_2
 {
     public partial class Default : System.Web.UI.Page
     {
-        private ImagenNegocio imagenNegocio;
-        private List<string> UrlImagenesArticulo;
+        public ImagenNegocio imagenNegocio;
         private int IndiceImagen;
         public List<Articulo> ListaArticulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            imagenNegocio = new ImagenNegocio();
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulo = negocio.Listar();
 

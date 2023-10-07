@@ -39,17 +39,6 @@ namespace negocio
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.UrlImagen = (string)datos.Lector["UrlImagen"];
 
-                    //imagenes.SetearConsulta("select i.ImagenUrl IdArticulo from IMAGENES i join ARTICULOS a on a.Id = IdArticulo where a.Codigo = @CodigoArticulo");
-                    //imagenes.SetearParametro("@CodigoArticulo", aux.Codigo);
-
-                    //imagenes.EjecutarLectura();
-
-                    //while (imagenes.Lector.Read())
-                    //{
-                    //    if((string)imagenes.Lector["ImagenUrl"] != null)
-                    //        aux.UrlImagen.Add((string)imagenes.Lector["ImagenUrl"]);
-                    //}
-                    //imagenes.CerrarConexion();
 
                     lista.Add(aux);
                 }
@@ -66,42 +55,6 @@ namespace negocio
             }
         }
 
-        //public List<string> ListarImagenesPorArticulo(string cod)
-        //{
-        //    List<string> listaImagenes = new List<string>();
-        //    AccesoDatos datos = new AccesoDatos();
-
-        //    try
-        //    {
-        //        datos.SetearConsulta("select i.ImagenUrl from IMAGENES I join ARTICULOS A on A.Id = I.IdArticulo where A.Codigo = @CodArticulo");
-        //        datos.SetearParametro("@CodArticulo", cod);
-
-        //        datos.EjecutarLectura();
-
-        //        while (datos.Lector.Read())
-        //        {
-        //            Articulo aux = new Articulo();
-
-
-
-        //            aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
-
-        //            if(aux.UrlImagen !=  null)
-        //                listaImagenes.Add(aux.UrlImagen);
-
-        //        }
-
-        //        return listaImagenes;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.CerrarConexion();
-        //    }
-        //}
 
         public void Agregar(Articulo articulo)
         {
