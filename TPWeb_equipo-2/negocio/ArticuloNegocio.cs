@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,13 @@ namespace negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+            AccesoDatos imagenes = new AccesoDatos();
 
             try
             {
                 //datos.SetearConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion As Marca, IsNull (C.Descripcion, 'Sin categorizar') As Categoria, A.Precio\r\nFrom ARTICULOS As A\r\nLeft Join MARCAS As M\r\n\tOn A.IdMarca = M.Id\r\nLeft Join CATEGORIAS As C\r\n\tOn A.IdCategoria = C.Id");
-                datos.SetearConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion As Marca, IsNull (C.Descripcion, 'Sin categorizar') As Categoria, A.Precio As Precio \r\nFrom ARTICULOS As A \r\n\tLeft Join MARCAS As M On A.IdMarca = M.Id \r\n\tLeft Join CATEGORIAS As C On A.IdCategoria = C.Id");
+                //datos.SetearConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion As Marca, IsNull (C.Descripcion, 'Sin categorizar') As Categoria, A.Precio As Precio \r\nFrom ARTICULOS As A \r\n\tLeft Join MARCAS As M On A.IdMarca = M.Id \r\n\tLeft Join CATEGORIAS As C On A.IdCategoria = C.Id");
+                datos.SetearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, ISNULL(C.Descripcion, 'Sin categorizar') AS Categoria, A.Precio AS Precio, I.ImagenUrl AS UrlImagen FROM ARTICULOS AS A LEFT JOIN MARCAS AS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS AS C ON A.IdCategoria = C.Id LEFT JOIN( SELECT IdArticulo, ImagenUrl, ROW_NUMBER() OVER (PARTITION BY IdArticulo ORDER BY Id) AS RowNum FROM IMAGENES) AS I ON I.IdArticulo = A.Id AND I.RowNum = 1");
 
                 datos.EjecutarLectura();
 
@@ -34,6 +37,19 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+
+                    //imagenes.SetearConsulta("select i.ImagenUrl IdArticulo from IMAGENES i join ARTICULOS a on a.Id = IdArticulo where a.Codigo = @CodigoArticulo");
+                    //imagenes.SetearParametro("@CodigoArticulo", aux.Codigo);
+
+                    //imagenes.EjecutarLectura();
+
+                    //while (imagenes.Lector.Read())
+                    //{
+                    //    if((string)imagenes.Lector["ImagenUrl"] != null)
+                    //        aux.UrlImagen.Add((string)imagenes.Lector["ImagenUrl"]);
+                    //}
+                    //imagenes.CerrarConexion();
 
                     lista.Add(aux);
                 }
@@ -50,40 +66,42 @@ namespace negocio
             }
         }
 
-        public List<string> ListarImagenesPorArticulo(string cod)
-        {
-            List<string> listaImagenes = new List<string>();
-            AccesoDatos datos = new AccesoDatos();
+        //public List<string> ListarImagenesPorArticulo(string cod)
+        //{
+        //    List<string> listaImagenes = new List<string>();
+        //    AccesoDatos datos = new AccesoDatos();
 
-            try
-            {
-                datos.SetearConsulta("select i.ImagenUrl from IMAGENES I join ARTICULOS A on A.Id = I.IdArticulo where A.Codigo = @CodArticulo");
-                datos.SetearParametro("@CodArticulo", cod);
+        //    try
+        //    {
+        //        datos.SetearConsulta("select i.ImagenUrl from IMAGENES I join ARTICULOS A on A.Id = I.IdArticulo where A.Codigo = @CodArticulo");
+        //        datos.SetearParametro("@CodArticulo", cod);
 
-                datos.EjecutarLectura();
+        //        datos.EjecutarLectura();
 
-                while (datos.Lector.Read())
-                {
-                    Articulo aux = new Articulo();
+        //        while (datos.Lector.Read())
+        //        {
+        //            Articulo aux = new Articulo();
 
-                    aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
 
-                    if(aux.UrlImagen !=  null)
-                        listaImagenes.Add(aux.UrlImagen);
 
-                }
+        //            aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
 
-                return listaImagenes;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.CerrarConexion();
-            }
-        }
+        //            if(aux.UrlImagen !=  null)
+        //                listaImagenes.Add(aux.UrlImagen);
+
+        //        }
+
+        //        return listaImagenes;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.CerrarConexion();
+        //    }
+        //}
 
         public void Agregar(Articulo articulo)
         {

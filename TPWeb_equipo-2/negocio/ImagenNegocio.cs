@@ -21,15 +21,15 @@ namespace negocio
             PictureBox = pictureBox;
         }
 
-        public List<string> GetImagenesNegocio(Articulo articulo)
-        {
-            List<string> ListaImagenes = new List<string>();
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+        //public List<string> GetImagenesNegocio(Articulo articulo)
+        //{
+        //    List<string> ListaImagenes = new List<string>();
+        //    ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
-            ListaImagenes = articuloNegocio.ListarImagenesPorArticulo(articulo.Codigo);
+        //    ListaImagenes = articuloNegocio.ListarImagenesPorArticulo(articulo.Codigo);
 
-            return ListaImagenes;
-        }
+        //    return ListaImagenes;
+        //}
 
         public void CargarImagenDesdeURL(string url)
         {
