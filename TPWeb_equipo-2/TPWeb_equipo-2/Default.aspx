@@ -25,7 +25,7 @@
                                         <p class="card-text"><%: articulo.Descripcion %></p>
                                         <div class="d-flex justify-content-xl-between">
                                             <asp:Button Text="Ver detalle" CssClass="btn btn-dark" runat="server" />
-                                            <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" />
+                                            <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click"/>
                                         </div>
                                     </div>
                                 </div>

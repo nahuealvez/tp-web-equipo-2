@@ -24,6 +24,10 @@ namespace TPWeb_equipo_2
             
         }
 
+        protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
+        {
+            ;
+        }
 
     }
 }

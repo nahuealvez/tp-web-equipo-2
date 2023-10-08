@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" style="color: white, ;" href="#">🛒 Ver carrito</a>
+                        <a class="nav-link" style="color: white, ;" href="Carrito.aspx">🛒 Ver carrito</a>
                     </div>
                 </div>
             </div>
