@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container d-flex flex-column pt-3 gap-3">
-    <h2>Lista de productos</h2>
+        <h2>Lista de productos</h2>
     <%--<div class="d-flex flex-row gap-3">--%>
         <div class="row row-cols-1 row-cols-md-3 g-4">
            <%
@@ -24,13 +24,12 @@
                                         <h6 class="h5"><%: precio%></h6>
                                         <p class="card-text"><%: articulo.Descripcion %></p>
                                         <div class="d-flex justify-content-xl-between">
-                                            <asp:Button Text="Ver detalle" CssClass="btn btn-dark" runat="server" />
-                                            <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click"/>
+                                            <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" />
+                                            <asp:Button ID="btnAgregarAlCarrito" Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    
                         <%
                 }
             %>
