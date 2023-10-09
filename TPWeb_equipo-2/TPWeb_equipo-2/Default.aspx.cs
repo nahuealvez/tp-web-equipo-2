@@ -21,18 +21,20 @@ namespace TPWeb_equipo_2
             imagenNegocio = new ImagenNegocio();
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulo = negocio.Listar();
-        }
 
+            if (!IsPostBack)
+            {
+                repRepetidor.DataSource = ListaArticulo;
+                repRepetidor.DataBind();
+            }
+        }
+        protected void VerDetalleButton_Click(object sender, EventArgs e)
+        {
+            ;
+        }
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
         {
-            if (btnAgregarAlCarrito.Text == "Agregar al carrito")
-            {
-                btnAgregarAlCarrito.Text = "Quitar del carrito";
-            }
-            else
-            {
-                btnAgregarAlCarrito.Text = "Agregar al carrito";
-            }
+            ;
         }
 
     }

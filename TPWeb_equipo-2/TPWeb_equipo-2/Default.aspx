@@ -4,36 +4,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container d-flex flex-column pt-3 gap-3">
         <h2>Lista de productos</h2>
-    <%--<div class="d-flex flex-row gap-3">--%>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-           <%
-               foreach (dominio.Articulo articulo in ListaArticulo)
-               {
-                   string imageUrl = articulo.UrlImagen;
-
-                   string precio = articulo.Precio.ToString("N2", idioma);
-
-                   //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
-                        %>
-                    
-                            <div class="col">
-                                <div class="card">
-                                    <img src="<%: imagenNegocio.cargarImagen(imageUrl) %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%: articulo.Nombre %></h5>
-                                        <h6 class="h5"><%: precio%></h6>
-                                        <p class="card-text"><%: articulo.Descripcion %></p>
-                                        <div class="d-flex justify-content-xl-between">
-                                            <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" />
-                                            <asp:Button ID="btnAgregarAlCarrito" Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click"/>
-                                        </div>
-                                    </div>
+        <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
+            <asp:Repeater runat="server" id="repRepetidor">
+                <ItemTemplate>
+                    <div class="col">
+                        <div class="card">
+                            <img src="<%#Eval("urlimagen") %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                                <h6 class="h5"><%#Eval("precio")%></h6>
+                                <p class="card-text"><%#Eval("Descripcion")%></p>
+                                <div class="d-flex justify-content-xl-between">
+                                    <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="VerDetalleButton_Click"/>
+                                    <asp:Button ID="btnAgregarAlCarrito" Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="AgregarAlCarritoButton_Click"/>
                                 </div>
                             </div>
-                        <%
-                }
-            %>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
-    <%--</div>--%>
     </div>
 </asp:Content>
