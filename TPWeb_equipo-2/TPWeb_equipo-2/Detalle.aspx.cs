@@ -6,11 +6,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
+using System.Globalization;
 
 namespace TPWeb_equipo_2
 {
     public partial class Detalle : System.Web.UI.Page
     {
+        public CultureInfo idioma = new CultureInfo("es-ES"); //Se usa para convertir el precio en sistemas decimales argentino
         public Articulo ArticuloDetalle { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {

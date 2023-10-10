@@ -9,7 +9,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
            <%
                    string imageUrl = ArticuloDetalle.UrlImagen;
-                   string precio = ArticuloDetalle.Precio.ToString();
+                   string precio = ArticuloDetalle.Precio.ToString("N2", idioma);
                    //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
                         %>
 

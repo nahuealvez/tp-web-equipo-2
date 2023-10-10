@@ -29,14 +29,14 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataBind();
             }
 
-            if(Session["ListaCarrito"] == null)
+            /*if(Session["ListaCarrito"] == null)
             {
                 ListaCarrito = new List<Articulo>();
             }
             else
             {
                 ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
-            }
+            }*/
 
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
@@ -46,6 +46,14 @@ namespace TPWeb_equipo_2
         }
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
         {   
+            if(Session["ListaCarrito"] == null)
+            {
+                ListaCarrito = new List<Articulo>();
+            }
+            else
+            {
+                ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
+            }
             int Id = int.Parse(((Button)sender).CommandArgument);
             ListaCarrito.Add(ListaArticulo.Find(x =>  x.Id == Id));
             Session.Add("ListaCarrito", ListaCarrito);
