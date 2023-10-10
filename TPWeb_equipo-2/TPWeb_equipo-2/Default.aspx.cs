@@ -28,16 +28,6 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataSource = ListaArticulo;
                 repRepetidor.DataBind();
             }
-
-            /*if(Session["ListaCarrito"] == null)
-            {
-                ListaCarrito = new List<Articulo>();
-            }
-            else
-            {
-                ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
-            }*/
-
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
         {
