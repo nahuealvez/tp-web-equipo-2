@@ -30,6 +30,7 @@
                         <%
             %>
         </div>
+        <asp:Button Text="Volver al catálogo" Width="170px" CssClass="btn btn-outline-dark" runat="server" OnClientClick="window.history.back(); return false;"/>
     </div>
 
 </asp:Content>
