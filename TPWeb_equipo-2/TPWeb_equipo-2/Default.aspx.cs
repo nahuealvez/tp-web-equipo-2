@@ -30,7 +30,8 @@ namespace TPWeb_equipo_2
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
         {
-            ;
+            string Id = ((Button)sender).CommandArgument;
+            Response.Redirect("Detalle.aspx?ID=" + Id, false);
         }
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
         {
