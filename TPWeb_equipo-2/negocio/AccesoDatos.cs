@@ -27,7 +27,7 @@ namespace negocio
             // Conexión Iña
             conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=false; User ID=sa; Password=Gloria3279");
             // Conexión Nico
-            //conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
