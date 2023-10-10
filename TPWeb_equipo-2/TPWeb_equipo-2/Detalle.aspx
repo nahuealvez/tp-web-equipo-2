@@ -4,32 +4,32 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container d-flex flex-column pt-3 gap-3">
-        <h2>Detalle Producto</h2>
-    <%--<div class="d-flex flex-row gap-3">--%>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <h2>Detalle del producto</h2>
+        <div class="card mb-3" style="max-width: 900px;">
            <%
                    string imageUrl = ArticuloDetalle.UrlImagen;
                    string precio = ArticuloDetalle.Precio.ToString("N2", idioma);
                    //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
                         %>
 
-                            <div class="col">
-                                <div class="card">
-                                    <img src="<%: ArticuloDetalle.UrlImagen %>" class="card-img-top" alt="...">
+                            <div class="row g-0">
+                                <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title"><%: ArticuloDetalle.Nombre %></h5>
-                                        <h6 class="h5"><%: precio%></h6>
+                                        <h3 class="card-title"><%: ArticuloDetalle.Nombre %></h3>
+                                        <h3 class="h3"><%: "$" + precio%></h3>
                                         <p class="card-text"><%: ArticuloDetalle.Descripcion %></p>
                                         <div class="d-flex justify-content-xl-between">
-                                            <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click"/>
+                                            <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click" />
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="<%: ArticuloDetalle.UrlImagen %>" class="card-img-top" alt="ImagenProducto">
                                 </div>
                             </div>
                         <%
             %>
         </div>
-    <%--</div>--%>
     </div>
 
 </asp:Content>

@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 using dominio;
 using negocio;
+using System.Web.UI.HtmlControls;
 
 namespace TPWeb_equipo_2
 {
     public partial class Default : System.Web.UI.Page
     {
-        public CultureInfo idioma = new CultureInfo("es-ES"); //Se usa para convertir el precio en sistemas decimales argentino
         public ImagenNegocio imagenNegocio;
         private int IndiceImagen;
         public List<Articulo> ListaArticulo { get; set; }
