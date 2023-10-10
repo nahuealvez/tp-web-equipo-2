@@ -5,11 +5,13 @@
     <div class="container d-flex flex-column pt-3 gap-3">
         <h2>Lista de productos</h2>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
-            <asp:Repeater runat="server" id="repRepetidor">
+            <asp:Repeater runat="server" id="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
                 <ItemTemplate>
                     <div class="col">
                         <div class="card">
-                            <img src="<%#Eval("urlimagen") %>" class="card-img-top" alt="...">
+                            <%--<img runat="server" id="imgProducto" src="<%#Eval("urlimagen") %>" class="card-img-top" alt="...">--%>
+                            <asp:Image runat="server" ID="imgProducto" ImageUrl='<%#Eval("urlimagen") %>' AlternateText="Texto alternativo" CssClass="card-img-top" />
+
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                 <h6 class="h5"><%#Eval("precio")%></h6>
