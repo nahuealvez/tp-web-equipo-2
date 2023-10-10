@@ -16,6 +16,7 @@ namespace TPWeb_equipo_2
         public ImagenNegocio imagenNegocio;
         private int IndiceImagen;
         public List<Articulo> ListaArticulo { get; set; }
+        public List<Articulo> ListaCarrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             imagenNegocio = new ImagenNegocio();
@@ -27,14 +28,28 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataSource = ListaArticulo;
                 repRepetidor.DataBind();
             }
+
+            if(Session["ListaCarrito"] == null)
+            {
+                ListaCarrito = new List<Articulo>();
+            }
+            else
+            {
+                ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
+            }
+
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
         {
-            ;
+            string Id = ((Button)sender).CommandArgument;
+            Response.Redirect("Detalle.aspx?ID=" + Id, false);
         }
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
-        {
-            ;
+        {   
+            int Id = int.Parse(((Button)sender).CommandArgument);
+            ListaCarrito.Add(ListaArticulo.Find(x =>  x.Id == Id));
+            Session.Add("ListaCarrito", ListaCarrito);
+
         }
 
         protected void repRepetidor_ItemDataBound(object sender, RepeaterItemEventArgs e)
