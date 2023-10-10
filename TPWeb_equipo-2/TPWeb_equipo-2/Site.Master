@@ -20,7 +20,8 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" style="color: white, ;" href="Carrito.aspx">🛒 Ver carrito</a>
+                        <a class="nav-link" style="color: white ;" href="Carrito.aspx">🛒 Carrito:</a>
+                        <asp:Label ID="CantidadElementosCarrito" Text="0" CssClass="nav-link" ForeColor="White" runat="server" />
                     </div>
                 </div>
             </div>
