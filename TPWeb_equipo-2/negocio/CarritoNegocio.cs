@@ -12,7 +12,7 @@ namespace negocio
         public List<Articulo> ListaArticulosCarrito { get; set; }
         public CarritoNegocio(List<Articulo> ListaArticulos)
         {
-            ListaArticulosCarrito = ListaArticulos;
+            ;
         }
     }
 }
