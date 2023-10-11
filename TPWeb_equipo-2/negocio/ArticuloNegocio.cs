@@ -37,8 +37,8 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.UrlImagen = (string)datos.Lector["UrlImagen"];
-
+                    if(!(datos.Lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
 
                     lista.Add(aux);
                 }
