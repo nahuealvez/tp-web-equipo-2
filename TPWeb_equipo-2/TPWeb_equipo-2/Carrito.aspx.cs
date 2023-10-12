@@ -46,6 +46,7 @@ namespace TPWeb_equipo_2
             int Id = int.Parse(((Button)sender).CommandArgument);
             ListaCarrito.Remove(ListaCarrito.Find(x => x.Id == Id));
             Session.Add("ListaCarrito", ListaCarrito);
+            Session.Add("CantArtCarrito", ListaCarrito.Count);
 
             Response.Redirect(Request.RawUrl);
 
