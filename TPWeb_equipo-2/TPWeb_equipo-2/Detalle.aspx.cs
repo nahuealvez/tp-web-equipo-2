@@ -14,20 +14,38 @@ namespace TPWeb_equipo_2
     {
         public CultureInfo idioma = new CultureInfo("es-ES"); //Se usa para convertir el precio en sistemas decimales argentino
         public Articulo ArticuloDetalle { get; set; }
+        public List<Articulo> ListaCarrito { get; set; }
+        public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            List<Articulo> listaArticulos = new List<Articulo>();
-            listaArticulos = negocio.Listar();
+            if(Request.QueryString["ID"] != null) { 
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                ListaArticulos = negocio.Listar();
             
-            int id = int.Parse(Request.QueryString["ID"]);
-            ArticuloDetalle = listaArticulos.Find(x => x.Id == id);
+                int id = int.Parse(Request.QueryString["ID"]);
+                ArticuloDetalle = ListaArticulos.Find(x => x.Id == id);
+            }
 
         }
 
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)
         {
-            ;
+            
+            if (Session["ListaCarrito"] == null)
+            {
+                ListaCarrito = new List<Articulo>();
+            }
+            else
+            {
+                ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
+            }
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ListaArticulos = negocio.Listar();
+            int Id = int.Parse(Request.QueryString["ID"]);
+            ListaCarrito.Add(ListaArticulos.Find(x => x.Id == Id));
+            Session.Add("ListaCarrito", ListaCarrito);
+            Session.Add("CantArtCarrito", ListaCarrito.Count);
+            Response.Redirect(Request.RawUrl);
         }
     }
 }
