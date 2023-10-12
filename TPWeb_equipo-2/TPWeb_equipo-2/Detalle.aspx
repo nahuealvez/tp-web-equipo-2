@@ -16,7 +16,6 @@
             <%
                 string imageUrl = ArticuloDetalle.UrlImagen;
                 string precio = ArticuloDetalle.Precio.ToString("N2", idioma);
-                //bool isValidUrl = imagenNegocio.ImagenURLValida(imageUrl);
             %>
 
             <div class="row g-0">
@@ -26,7 +25,14 @@
                         <h3 class="h3"><%: "$" + precio%></h3>
                         <p class="card-text"><%: ArticuloDetalle.Descripcion %></p>
                         <div class="d-flex justify-content-xl-between">
+                            <%if (ListaCarrito.Exists(x => x.Id == int.Parse(Request.QueryString["ID"])))
+                                { %>
+                            <asp:Button Text="Eliminar del carrito" CssClass="btn btn-dark" runat="server" OnClick="EliminarDelCarritoButton_Click" />
+                            <%}
+                                else 
+                                { %>
                             <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click" />
+                            <%} %>
                         </div>
                     </div>
                 </div>
