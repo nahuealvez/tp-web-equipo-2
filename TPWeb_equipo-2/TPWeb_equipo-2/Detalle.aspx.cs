@@ -16,6 +16,7 @@ namespace TPWeb_equipo_2
         public Articulo ArticuloDetalle { get; set; }
         public List<Articulo> ListaCarrito { get; set; }
         public List<Articulo> ListaArticulos { get; set; }
+        public List<string> UrlImagenes { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             /*if (!IsPostBack)
@@ -32,8 +33,44 @@ namespace TPWeb_equipo_2
                 int id = int.Parse(Request.QueryString["ID"]);
                 ArticuloDetalle = ListaArticulos.Find(x => x.Id == id);
                 ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
+                UrlImagenes = ListarImagenesPorArticulo(ArticuloDetalle.Codigo);
             }
 
+        }
+
+        public List<string> ListarImagenesPorArticulo(string cod)
+        {
+            List<string> listaImagenes = new List<string>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("select i.ImagenUrl from IMAGENES I join ARTICULOS A on A.Id = I.IdArticulo where A.Codigo = @CodArticulo");
+                datos.SetearParametro("@CodArticulo", cod);
+
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+
+                    if (aux.UrlImagen != null)
+                        listaImagenes.Add(aux.UrlImagen);
+
+                }
+
+                return listaImagenes;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         protected void AgregarAlCarritoButton_Click(object sender, EventArgs e)

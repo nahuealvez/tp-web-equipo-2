@@ -29,7 +29,7 @@
                                 { %>
                             <asp:Button Text="Eliminar del carrito" CssClass="btn btn-dark" runat="server" OnClick="EliminarDelCarritoButton_Click" />
                             <%}
-                                else 
+                                else
                                 { %>
                             <asp:Button Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" OnClick="AgregarAlCarritoButton_Click" />
                             <%} %>
@@ -37,12 +37,36 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="<%: ArticuloDetalle.UrlImagen %>" class="card-img-top" alt="ImagenProducto" onerror="handleImageError(this);">
+                    <%--<img src="<%: ArticuloDetalle.UrlImagen %>" class="card-img-top" alt="ImagenProducto" onerror="handleImageError(this);">
                     <script>
                         function handleImageError(image) {
                             image.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F005%2F337%2F799%2Fnon_2x%2Ficon-image-not-found-free-vector.jpg&f=1&nofb=1&ipt=b1f6177c0dea54678b440945501a9969e721a2f91f76b8c9e18d8b30885fab8a&ipo=images'; // Cargar una imagen de marcador de posición.
                         }
-                    </script>
+                    </script>--%>
+
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-inner">
+                            <%foreach (var imagen in UrlImagenes)
+                                {%>
+                            <div class="carousel-item active">
+                                <img src="<%:imagen %>" class="card-img-top" alt="ImagenProducto" onerror="handleImageError(this);">
+                                <script>
+                                    function handleImageError(image) {
+                                        image.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F005%2F337%2F799%2Fnon_2x%2Ficon-image-not-found-free-vector.jpg&f=1&nofb=1&ipt=b1f6177c0dea54678b440945501a9969e721a2f91f76b8c9e18d8b30885fab8a&ipo=images'; // Cargar una imagen de marcador de posición.
+                                    }
+                                </script>
+                            </div>
+                            <%}%>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <%
