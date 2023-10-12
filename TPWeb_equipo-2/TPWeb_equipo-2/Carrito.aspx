@@ -5,6 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container d-flex flex-column pt-3 gap-3">
         <h2>Carrito de Productos</h2>
+        <%if (ListaCarrito.Count == 0)
+            {%>
+        <h2>No ha agregado ningún producto al carrito</h2>
+        <%}
+            else
+            { %>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
             <asp:Repeater runat="server" ID="repRepetidor">
                 <ItemTemplate>
@@ -25,5 +31,6 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
+        <%} %>
     </div>
 </asp:Content>
