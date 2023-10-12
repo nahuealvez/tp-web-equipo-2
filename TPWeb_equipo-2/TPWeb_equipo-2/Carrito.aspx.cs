@@ -47,6 +47,8 @@ namespace TPWeb_equipo_2
             ListaCarrito.Remove(ListaCarrito.Find(x => x.Id == Id));
             Session.Add("ListaCarrito", ListaCarrito);
 
+            Response.Redirect(Request.RawUrl);
+
         }
     }
 }

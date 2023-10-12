@@ -28,6 +28,7 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataSource = ListaArticulo;
                 repRepetidor.DataBind();
             }
+            
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
         {
@@ -47,6 +48,8 @@ namespace TPWeb_equipo_2
             int Id = int.Parse(((Button)sender).CommandArgument);
             ListaCarrito.Add(ListaArticulo.Find(x =>  x.Id == Id));
             Session.Add("ListaCarrito", ListaCarrito);
+            Session.Add("CantArtCarrito", ListaCarrito.Count);
+            Response.Redirect(Request.RawUrl);
 
         }
 

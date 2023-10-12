@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,14 @@ namespace TPWeb_equipo_2
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["CantArtCarrito"] == null)
+            {
+                contadorElementosCarrito(0);
+            }
+            else
+            {
+                contadorElementosCarrito(int.Parse(Session["CantArtCarrito"].ToString()));
+            }
         }
     }
 }
