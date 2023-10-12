@@ -5,12 +5,17 @@
     <div class="container d-flex flex-column pt-3 gap-3">
         <h2>Lista de productos</h2>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
-            <asp:Repeater runat="server" id="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
+            <asp:Repeater runat="server" id="repRepetidor" >
                 <ItemTemplate>
                     <div class="col">
                         <div class="card">
-                            <%--<img runat="server" id="imgProducto" src="<%#Eval("urlimagen") %>" class="card-img-top" alt="...">--%>
-                            <asp:Image runat="server" ID="imgProducto" ImageUrl='<%#Eval("urlimagen") %>' AlternateText="ImagenProducto" CssClass="card-img-top" />
+                            <img id="imgProducto" src="<%#Eval("urlimagen") %>" class="card-img-top" alt="..." onerror="handleImageError(this);" />
+
+                            <script>
+                                function handleImageError(image) {
+                                    image.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F005%2F337%2F799%2Fnon_2x%2Ficon-image-not-found-free-vector.jpg&f=1&nofb=1&ipt=b1f6177c0dea54678b440945501a9969e721a2f91f76b8c9e18d8b30885fab8a&ipo=images'; // Cargar una imagen de marcador de posición.
+                                }
+                            </script>
 
                             <div class="card-body">
                                 <h5 class="card-title" ID="h6Precio"><%#Eval("Nombre") %></h5>
