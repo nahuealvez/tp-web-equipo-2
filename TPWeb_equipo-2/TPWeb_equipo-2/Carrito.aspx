@@ -25,10 +25,9 @@
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                 <h6 class="h5"><%#Eval("precio")%></h6>
-                                <p class="card-text"><%#Eval("Descripcion")%></p>
                                 <div class="d-flex justify-content-xl-between">
                                     <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="VerDetalleButton_Click" />
-                                    <asp:Button ID="btnEliminarCarrito" Text="Eliminar del carrito" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="EliminarDelCarritoButton_Click" />
+                                    <asp:Button ID="btnEliminarCarrito" Text="Eliminar del carrito" CssClass="btn btn-danger" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="EliminarDelCarritoButton_Click" />
                                 </div>
                             </div>
                         </div>

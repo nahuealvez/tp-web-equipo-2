@@ -8,7 +8,7 @@
         <h2>Detalle del producto</h2>
         <%if (ArticuloDetalle == null)
             { %>
-        <h2>No Ingreso ningún producto</h2>
+        <h2>Carrito sin productos</h2>
         <%}
             else
             { %>
@@ -73,7 +73,7 @@
             %>
         </div>
         <%} %>
-        <asp:Button Text="Volver al catálogo" Width="155px" CssClass="btn btn-outline-dark" runat="server" OnClientClick="window.history.back(); return false;" />
+        <asp:Button Text="Volver" Width="120px" CssClass="btn btn-outline-dark" runat="server" OnClientClick="window.history.back(); return false;" />
     </div>
 
 </asp:Content>
