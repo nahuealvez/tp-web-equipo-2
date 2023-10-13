@@ -12,8 +12,8 @@
             <asp:Repeater runat="server" id="repRepetidor" >
                 <ItemTemplate>
                     <div class="col">
-                        <div class="card">
-                            <img id="imgProducto" src="<%#Eval("urlimagen") %>" class="card-img-top" alt="..." onerror="handleImageError(this);" />
+                        <div class="card h-100">
+                            <img id="imgProducto" src="<%#Eval("urlimagen") %>" class="card-img-top img-fluid"  alt="..." onerror="handleImageError(this);" />
 
                             <script>
                                 function handleImageError(image) {
@@ -21,9 +21,11 @@
                                 }
                             </script>
 
-                            <div class="card-body">
-                                <h5 class="card-title" ID="h6Precio"><%#Eval("Nombre") %></h5>
-                                <h6 class="h5" id="precio"><%# string.Format("${0:N2}", Eval("precio")) %></h6>
+                            <div class="card-body d-flex flex-column justify-content-between gap-3">
+                                <div>
+                                    <h5 class="card-title" ID="h6Precio"><%#Eval("Nombre") %></h5>
+                                    <h6 class="h5" id="precio"><%# string.Format("${0:N2}", Eval("precio")) %></h6>
+                                </div>
                                 <%--<p class="card-text"><%#Eval("Descripcion")%></p>--%>
                                 <div class="d-flex justify-content-xl-between">
                                     <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="VerDetalleButton_Click"/>
