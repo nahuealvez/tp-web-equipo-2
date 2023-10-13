@@ -32,7 +32,6 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataSource = ListaCarrito;
                 repRepetidor.DataBind();
             }
-
         }
 
         protected void VerDetalleButton_Click(object sender, EventArgs e)
@@ -50,6 +49,13 @@ namespace TPWeb_equipo_2
 
             Response.Redirect(Request.RawUrl);
 
+        }
+
+        public void contadorMontoTotal(decimal monto)
+        {
+            string montoTotal = monto.ToString("C", CultureInfo.CreateSpecificCulture("es-AR"));
+
+            txtMontoTotal.Text = montoTotal;
         }
     }
 }

@@ -11,8 +11,8 @@
         <%}
             else
             { %>
-        <div class="d-flex">
-            <h3>Monto total: $</h3>
+        <div class="d-flex gap-2">
+            <h3>Monto total: </h3>
             <asp:Label ID="txtMontoTotal" Text="0" CssClass="h3" runat="server" />
         </div>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
