@@ -7,10 +7,14 @@
         <h2>Carrito de Productos</h2>
         <%if (ListaCarrito.Count == 0)
             {%>
-        <h2>No ha agregado ningún producto al carrito</h2>
+        <h3>No ha agregado ningún producto al carrito</h3>
         <%}
             else
             { %>
+        <div class="d-flex">
+            <h3>Monto total: $</h3>
+            <asp:Label ID="txtMontoTotal" Text="0" CssClass="h3" runat="server" />
+        </div>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
             <asp:Repeater runat="server" ID="repRepetidor">
                 <ItemTemplate>
