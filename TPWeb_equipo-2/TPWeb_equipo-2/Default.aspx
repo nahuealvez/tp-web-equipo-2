@@ -19,7 +19,7 @@
 
                             <div class="card-body">
                                 <h5 class="card-title" ID="h6Precio"><%#Eval("Nombre") %></h5>
-                                <h6 class="h5" id="precio"><%# string.Format("{0:N2}", Eval("precio")) %></h6>
+                                <h6 class="h5" id="precio"><%# string.Format("${0:N2}", Eval("precio")) %></h6>
                                 <%--<p class="card-text"><%#Eval("Descripcion")%></p>--%>
                                 <div class="d-flex justify-content-xl-between">
                                     <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="VerDetalleButton_Click"/>
