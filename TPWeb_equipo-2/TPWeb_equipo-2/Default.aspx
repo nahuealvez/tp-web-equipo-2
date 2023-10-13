@@ -5,8 +5,8 @@
     <div class="container d-flex flex-column pt-3 gap-3">
         <h2>Lista de productos</h2>
         <div class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar productos..." aria-label="Search">
-            <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            <asp:TextBox ID="txtBusqueda" CssClass="form-control me-2" runat="server" />
+            <asp:Button ID="btnBuscar" Text="Buscar" CssClass="btn btn-outline-dark" runat="server" OnClick="btnBuscar_Click"/>
         </div>
         <div class="d-flex row row-cols-1 row-cols-md-3 g-4">
             <asp:Repeater runat="server" id="repRepetidor" >

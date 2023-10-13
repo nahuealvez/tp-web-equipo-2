@@ -63,5 +63,15 @@ namespace TPWeb_equipo_2
             Response.Redirect(Request.RawUrl);
 
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBusqueda.Text.Trim().ToLower();
+
+            List<Articulo> productosFiltrados = ListaArticulo.Where(producto => producto.Nombre.ToLower().Contains(busqueda)).ToList();
+
+            repRepetidor.DataSource = productosFiltrados;
+            repRepetidor.DataBind();
+        }
     }
 }
