@@ -40,6 +40,19 @@ namespace TPWeb_equipo_2
             }
             ListaCarrito = Session["ListaCarrito"] as List<Articulo>;
 
+            foreach(RepeaterItem item in repRepetidor.Items)
+            {
+
+                int Id = int.Parse((item.FindControl("btnAgregarAlCarrito") as Button).CommandArgument.ToString());
+                Button btnAgregarAlCarrito = (Button)item.FindControl("btnAgregarAlCarrito");
+                Button btnEliminarDelCarrito = (Button)item.FindControl("btnEliminarDelCarrito");
+                if (ListaCarrito.Exists(x => x.Id == Id))
+                {
+                    btnAgregarAlCarrito.Visible = false;
+                    btnEliminarDelCarrito.Visible = true;
+                }
+            }
+
         }
         protected void VerDetalleButton_Click(object sender, EventArgs e)
         {
@@ -64,6 +77,15 @@ namespace TPWeb_equipo_2
 
         }
 
+        protected void EliminarDelCarritoButton_Click(object sender, EventArgs e)
+        {
+            int Id = int.Parse(((Button)sender).CommandArgument);
+            ListaCarrito.Remove(ListaCarrito.Find(x => x.Id == Id));
+            Session.Add("ListaCarrito", ListaCarrito);
+            Session.Add("CantArtCarrito", ListaCarrito.Count);
+            Response.Redirect(Request.RawUrl);
+
+        }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string busqueda = txtBusqueda.Text.Trim().ToLower();
@@ -73,5 +95,6 @@ namespace TPWeb_equipo_2
             repRepetidor.DataSource = productosFiltrados;
             repRepetidor.DataBind();
         }
+
     }
 }

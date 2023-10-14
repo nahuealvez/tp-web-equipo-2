@@ -29,7 +29,8 @@
                                 <%--<p class="card-text"><%#Eval("Descripcion")%></p>--%>
                                 <div class="d-flex justify-content-xl-between">
                                     <asp:Button ID="btnVerDetalle" Text="Ver detalle" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="VerDetalleButton_Click"/>
-                                    <asp:Button ID="btnAgregarAlCarrito" Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="AgregarAlCarritoButton_Click"/>
+                                    <asp:Button ID="btnAgregarAlCarrito" Text="Agregar al carrito" CssClass="btn btn-dark" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="AgregarAlCarritoButton_Click" Visible="true"/>
+                                    <asp:Button ID="btnEliminarDelCarrito" Text="Eliminar del carrito" CssClass="btn btn-danger" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ProductoId" OnClick="EliminarDelCarritoButton_Click" Visible="false"/>
                                 </div>
                             </div>
                         </div>

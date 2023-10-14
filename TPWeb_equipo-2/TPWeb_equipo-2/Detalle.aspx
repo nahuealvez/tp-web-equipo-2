@@ -27,7 +27,7 @@
                         <div class="d-flex justify-content-xl-between">
                             <%if (ListaCarrito.Exists(x => x.Id == int.Parse(Request.QueryString["ID"])))
                                 { %>
-                            <asp:Button Text="Eliminar del carrito" CssClass="btn btn-dark" runat="server" OnClick="EliminarDelCarritoButton_Click" />
+                            <asp:Button Text="Eliminar del carrito" CssClass="btn btn-danger" runat="server" OnClick="EliminarDelCarritoButton_Click" />
                             <%}
                                 else
                                 { %>
