@@ -32,6 +32,13 @@ namespace TPWeb_equipo_2
                 repRepetidor.DataSource = ListaCarrito;
                 repRepetidor.DataBind();
             }
+            decimal importeCarrito = 0;
+
+            foreach (var articulo in ListaCarrito)
+            {
+                importeCarrito += articulo.Precio;
+            }
+            contadorMontoTotal(importeCarrito);
         }
 
         protected void VerDetalleButton_Click(object sender, EventArgs e)
@@ -57,5 +64,6 @@ namespace TPWeb_equipo_2
 
             txtMontoTotal.Text = montoTotal;
         }
+
     }
 }
