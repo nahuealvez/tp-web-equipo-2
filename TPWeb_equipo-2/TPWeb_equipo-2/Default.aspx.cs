@@ -42,7 +42,6 @@ namespace TPWeb_equipo_2
 
             foreach(RepeaterItem item in repRepetidor.Items)
             {
-
                 int Id = int.Parse((item.FindControl("btnAgregarAlCarrito") as Button).CommandArgument.ToString());
                 Button btnAgregarAlCarrito = (Button)item.FindControl("btnAgregarAlCarrito");
                 Button btnEliminarDelCarrito = (Button)item.FindControl("btnEliminarDelCarrito");
